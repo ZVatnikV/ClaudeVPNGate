@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:u="using:FluentAvalonia.UI.Controls"
+        x:Class="ClaudeVPNGate.MainWindow"
+        Title="Claude VPN Gate"
+        Width="1040" Height="700"
+        MinWidth="860" MinHeight="560"
+        WindowStartupLocation="CenterScreen">
+  <u:FANavigationView x:Name="Nav" PaneDisplayMode="Left" IsBackButtonVisible="False" PaneTitle="Claude VPN Gate">
+    <u:FANavigationView.MenuItems>
+      <u:FANavigationViewItem x:Name="NavDash" Tag="dash">
+        <u:FANavigationViewItem.IconSource><u:FASymbolIconSource Symbol="Home" /></u:FANavigationViewItem.IconSource>
+      </u:FANavigationViewItem>
+      <u:FANavigationViewItem x:Name="NavSet" Tag="settings">
+        <u:FANavigationViewItem.IconSource><u:FASymbolIconSource Symbol="Setting" /></u:FANavigationViewItem.IconSource>
+      </u:FANavigationViewItem>
+      <u:FANavigationViewItem x:Name="NavAd" Tag="adapters">
+        <u:FANavigationViewItem.IconSource><u:FASymbolIconSource Symbol="Globe" /></u:FANavigationViewItem.IconSource>
+      </u:FANavigationViewItem>
+    </u:FANavigationView.MenuItems>
+    <u:FANavigationView.PaneFooter>
+      <StackPanel Orientation="Horizontal" Spacing="8" Margin="12,8">
+        <Button x:Name="LangEn" Content="EN" Click="OnLang" />
+        <Button x:Name="LangRu" Content="RU" Click="OnLang" />
+      </StackPanel>
+    </u:FANavigationView.PaneFooter>
+    <Grid RowDefinitions="Auto,*" Margin="8,4,16,12">
+      <DockPanel Margin="16,12,8,0">
+        <Button x:Name="QuitButton" DockPanel.Dock="Right" Click="OnQuit" />
+        <StackPanel>
+          <TextBlock x:Name="PageTitle" FontSize="28" FontWeight="SemiBold" />
+          <TextBlock x:Name="PageHint" Opacity="0.7" TextWrapping="Wrap" />
+        </StackPanel>
+      </DockPanel>
+      <ScrollViewer Grid.Row="1" Margin="8,12,0,0">
+        <Grid>
+          <StackPanel x:Name="PageDash" Spacing="8" MaxWidth="760" HorizontalAlignment="Left">
+            <u:FAInfoBar x:Name="AdminBar" Severity="Warning" IsClosable="False">
+              <u:FAInfoBar.ActionButton>
+                <Button x:Name="AdminButton" Click="OnAdmin" />
+              </u:FAInfoBar.ActionButton>
+            </u:FAInfoBar>
+            <Border Padding="20,16" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
+              <StackPanel>
+                <TextBlock x:Name="StateLabel" FontSize="32" FontWeight="SemiBold" />
+                <TextBlock x:Name="StateSub" Opacity="0.7" />
+              </StackPanel>
+            </Border>
+            <u:FASettingsExpander x:Name="RowVpn" />
+            <u:FASettingsExpander x:Name="RowClaude" />
+            <u:FASettingsExpander x:Name="RowGuard" />
+            <u:FASettingsExpander x:Name="RowAdapter" />
+            <TextBlock x:Name="EventsTitle" FontWeight="SemiBold" Margin="4,12,0,4" />
+            <TextBlock x:Name="EventLog" TextWrapping="Wrap" Opacity="0.85" />
+          </StackPanel>
+          <StackPanel x:Name="PageSet" Spacing="10" IsVisible="False" MaxWidth="760" HorizontalAlignment="Left">
+            <TextBlock x:Name="LblInterval" />
+            <NumericUpDown x:Name="PollBox" Minimum="0.4" Maximum="5" Increment="0.1" FormatString="0.0" Width="160" HorizontalAlignment="Left" />
+            <TextBlock x:Name="LblKeys" />
+            <TextBox x:Name="KeysBox" Watermark="amnezia, my-tun" />
+            <TextBlock x:Name="LblIgnore" />
+            <TextBox x:Name="IgnoreBox" Watermark="radmin, hamachi" />
+            <ToggleSwitch x:Name="LoginSwitch" />
+            <StackPanel Orientation="Horizontal" Spacing="12">
+              <Button x:Name="SaveButton" Click="OnSave" />
+              <TextBlock x:Name="SaveNote" VerticalAlignment="Center" />
+            </StackPanel>
+            <TextBlock x:Name="SetNote" TextWrapping="Wrap" Opacity="0.7" />
+          </StackPanel>
+          <StackPanel x:Name="PageAd" Spacing="8" IsVisible="False">
+            <Button x:Name="ScanButton" HorizontalAlignment="Left" Click="OnScan" />
+            <ItemsControl x:Name="AdapterList" />
+          </StackPanel>
+        </Grid>
+      </ScrollViewer>
+    </Grid>
+  </u:FANavigationView>
+</Window>

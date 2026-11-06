@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ClaudeVPNGate</RootNamespace>
+    <AssemblyName>ClaudeVPNGate</AssemblyName>
+    <Version>1.0.0</Version>
+    <Company>ZVatnikV</Company>
+    <Product>Claude VPN Gate</Product>
+    <Description>Fail-closed guard. Claude stays sealed unless a VPN tunnel owns the default route.</Description>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' == '' Or $(RuntimeIdentifier.StartsWith('win'))">
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.1.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.5" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.5" />
+    <PackageReference Include="FluentAvaloniaUI" Version="3.1.0" />
+  </ItemGroup>
+</Project>

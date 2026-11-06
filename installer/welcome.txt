@@ -1,0 +1,5 @@
+Claude VPN Gate seals Claude unless a VPN tunnel owns the Windows default route.
+
+The installer and the app both ask for administrator rights. That is required to edit the hosts file, DNS policy, and firewall. Closing the window keeps the guard running. Quit seals Claude again.
+
+English is the default language. Russian is available in the app.
